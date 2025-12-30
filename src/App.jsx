@@ -1,26 +1,20 @@
-import { useState } from 'react'
-import './App.css'
-
-function App() {
- 
-  const [heading, setHeading] = useState('Magnificent Monke'
-
-  );
-
-
-  const clickHandler = ()=>{
-    setHeading('Radical Rhinos');
-  }
+import { Link } from "react-router";
+const App = () => {
   return (
-    <>
-      
-      <button type='button' onClick={clickHandler}>
-        Click Me
-      </button>
+    <div>
+      <h1 className="text-3xl font-bold underline">
+    Hello world!
+  </h1>
+      <p>Here are some examples of links to other pages</p>
+      <nav>
+        <ul>
+          <li>
+           <Link to="profile">Profile page</Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  );
+};
 
-      <h1>{heading}</h1>
-    </>
-  )
-}
-
-export default App
+export default App;
