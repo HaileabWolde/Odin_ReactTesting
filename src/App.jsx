@@ -1,19 +1,34 @@
-import { Link } from "react-router";
+import './App.css'
+import useCart from './hooks/useCart';
 const App = () => {
+  
+  const {loading, error, clothesapi} = useCart();
+
+
+  if(loading){
+  
+    return (
+      <h1>Loading</h1>
+    )
+  }
+
+  if (error) {
+    return <p style={{ color: 'red' }}>Error: {error}</p>;
+  }
+
+ console.log(clothesapi)
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-      <p>Here are some examples of links to other pages</p>
-      <nav>
-        <ul>
-          <li>
-           <Link to="profile">Profile page</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+   
+    <>
+    {
+      clothesapi.map((clothes)=> {
+        return (
+          <h1>{clothes.title}</h1>
+        )
+      })
+    }
+    </>
   );
 };
 

@@ -1,29 +1,32 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it} from 'vitest';
-import userEvent from "@testing-library/user-event";
-import App from './App';
+import App from "./App";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
 
-describe('App', () => {
-
-  it("renders magnificent monkeys", () => {
-    // since screen does not have the container property, we'll destructure render to obtain a container for this test
-    const { container } = render(<App />);
-    expect(container).toMatchSnapshot();
+describe("useCart", () => {
+  beforeEach(() => {
+    global.fetch = vi.fn();
   });
 
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
 
-  
-it("renders radical rhinos after button click", async () => {
-
-
-
-    const user = userEvent.setup();
+  it("fetches and displays clothes data", async () => {
+    global.fetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => [
+        { id: 1, title: "nike" },
+        { id: 2, title: "jordan" },
+      ],
+    });
 
     render(<App />);
-    const button = screen.getByRole("button", { name: "Click Me" });
 
-    await user.click(button);
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
 
-    expect(screen.getByRole("heading").textContent).toMatch(/radical rhinos/i);
+    expect(await screen.findByText(/nike/i)).toBeInTheDocument();
+    expect(await screen.findByText(/jordan/i)).toBeInTheDocument();
   });
 });
