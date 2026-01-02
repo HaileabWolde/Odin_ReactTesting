@@ -24,7 +24,7 @@ const App = () => {
     {
       clothesapi.map((clothes)=> {
         return (
-          <h1>{clothes.title}</h1>
+          <img src={clothes.image}/>
         )
       })
     }
