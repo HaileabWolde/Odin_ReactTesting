@@ -1,4 +1,5 @@
 import './App.css'
+import cartComponent from './components/Cart';
 import useCart from './hooks/useCart';
 const App = () => {
   
@@ -28,6 +29,7 @@ const App = () => {
         )
       })
     }
+    <cartComponent/>
     </>
   );
 };
