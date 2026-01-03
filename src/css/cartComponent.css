@@ -1,0 +1,8 @@
+.cart{
+    background-color: #fff;
+    box-shadow: 0 4px 10px #0003;
+    border-radius: 20px;
+    max-height: 70vh; /* 80% of viewport */
+    padding: 1rem;
+    overflow-y: auto; /* Scroll when content overflows */
+}

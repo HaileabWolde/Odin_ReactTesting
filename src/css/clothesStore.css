@@ -1,0 +1,18 @@
+.clothesStore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  
+}
+.clothe{
+    width: 30%;
+    min-height: 400px;
+    aspect-ratio: 1/1;
+    margin: 1rem 0rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    
+}

@@ -3,7 +3,7 @@ import '../css/cartComponent.css'
 const CartComponent = ()=> {
     return (
         <div className="cart">
-            <h1>Hello MotherFucker</h1>
+            <h1>Your Cart</h1>
         </div>
     )
 }
