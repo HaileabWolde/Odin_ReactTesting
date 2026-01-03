@@ -1,11 +1,17 @@
-import '../css/clothesStore'
+import '../css/clothesStore.css'
 
 
-const clothesStore = ()=>{
+const ClothesStore = ({clothesapi})=>{
     return (
         <div className="clothesStore">
-
+                     {
+                        clothesapi.map((clothes)=> {
+                     return (
+                          <img src={clothes.image}/>
+                        )
+                    })
+                    }
         </div>
     )
 }
-export default clothesStore;
+export default ClothesStore;

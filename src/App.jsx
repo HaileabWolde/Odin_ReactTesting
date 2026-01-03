@@ -1,5 +1,6 @@
 import './App.css'
-import cartComponent from './components/Cart';
+import ClothesStore from './components/ClothesStore';
+import CartComponent from './components/Cart';
 import useCart from './hooks/useCart';
 const App = () => {
   
@@ -17,19 +18,14 @@ const App = () => {
     return <p style={{ color: 'red' }}>Error: {error}</p>;
   }
 
- console.log(clothesapi)
+ 
 
   return (
    
     <>
-    {
-      clothesapi.map((clothes)=> {
-        return (
-          <img src={clothes.image}/>
-        )
-      })
-    }
-    <cartComponent/>
+    <ClothesStore clothesapi={clothesapi}/>
+   
+    < CartComponent/>
     </>
   );
 };

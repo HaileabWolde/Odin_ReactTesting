@@ -1,10 +1,10 @@
 import '../css/cartComponent.css'
 
-const cartComponent = ()=> {
+const CartComponent = ()=> {
     return (
         <div className="cart">
             <h1>Hello MotherFucker</h1>
         </div>
     )
 }
-export default cartComponent;
+export default CartComponent;
