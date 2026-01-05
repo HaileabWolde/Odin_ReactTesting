@@ -1,5 +1,5 @@
 import '../css/clothesStore.css'
-
+import { FaShoppingCart } from 'react-icons/fa';
 
 const ClothesStore = ({clothesapi})=>{
     return (
@@ -18,7 +18,9 @@ const ClothesStore = ({clothesapi})=>{
                                  backgroundPosition: 'center',
                                  }}
                             >
-                                <button className='cursor-pointer bg-white px-8 py-4 rounded-lg shadow-2xl self-end '>Add to Cart</button>
+                                <button 
+                                className='cartButton cursor-pointer bg-white px-8 py-2 rounded-3xl shadow-2xl self-end border-2 flex gap-2 items-center'>
+                                    <span>Add to Cart </span>  <FaShoppingCart size={18}/></button>
                                   
                             </did>
                           

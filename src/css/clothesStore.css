@@ -16,3 +16,6 @@
     justify-content: center;
     
 }
+.cartButton{
+    border-color: hsl(12, 20%, 44%);
+}
