@@ -17,8 +17,7 @@ describe("useCart", () => {
       ok: true,
       status: 200,
       json: async () => [
-        { id: 1, title: "nike" },
-        { id: 2, title: "jordan" },
+        { id: 1, image: "./my-background.jpg" },
       ],
     });
 
@@ -26,7 +25,9 @@ describe("useCart", () => {
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
 
-    expect(await screen.findByText(/nike/i)).toBeInTheDocument();
-    expect(await screen.findByText(/jordan/i)).toBeInTheDocument();
+   const clothediv = await screen.findByTestId('clothediv'); // use findBy for async
+
+   expect(clothediv).toHaveStyle('background-image: url(./my-background.jpg)')
+   
   });
 });
