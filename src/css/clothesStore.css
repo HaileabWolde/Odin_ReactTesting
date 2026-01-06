@@ -17,5 +17,12 @@
     
 }
 .cartButton{
-    border-color: hsl(12, 20%, 44%);
+    border: 2px solid hsl(12, 20%, 44%);
+    background-color: white;
+    justify-content: center;
+}
+.cartButtonWhite{
+    background-color: hsl(14, 86%, 42%);
+    color: white;
+    justify-content: space-between;
 }

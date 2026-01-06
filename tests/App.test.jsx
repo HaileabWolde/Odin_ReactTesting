@@ -1,4 +1,4 @@
-import App from "./App";
+import App from "../src/App";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";

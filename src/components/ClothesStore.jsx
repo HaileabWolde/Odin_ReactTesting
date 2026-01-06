@@ -1,7 +1,15 @@
-import '../css/clothesStore.css'
+import { useState } from 'react';
+import '../css/clothesStore.css';
+import { FaMinus, FaPlus  } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
 
 const ClothesStore = ({clothesapi})=>{
+
+    const [cartButton, setCartButton] = useState(true);
+    const [clotheQuantity, setClotheQuantity] = useState(0)
+    const handleCartButton = ()=>{
+        setCartButton(false);
+    }
     return (
         <div className="clothesStore">
                      {
@@ -21,8 +29,32 @@ const ClothesStore = ({clothesapi})=>{
                                  }}
                             >
                                 <button 
-                                className='cartButton cursor-pointer bg-white px-8 py-2 rounded-3xl shadow-2xl self-end border-2 flex gap-2 items-center'>
-                                    <span>Add to Cart </span>  <FaShoppingCart size={18}/></button>
+                                className={`cursor-pointer ${cartButton ? `cartButton` : `cartButtonWhite`} w-3/4 py-3 px-3 rounded-3xl shadow-2xl self-end  flex gap-2 items-center`}
+                                onClick={handleCartButton}
+                                >
+                                    {
+                                        cartButton ? 
+                                        <>
+                                         <span>Add to Cart </span>  <FaShoppingCart size={18}/>
+                                        
+                                        </>
+                                        : 
+                                      
+                                        <>
+                                        <div className='border-white border-2 rounded-xl p-1'>
+                                            <FaMinus/>
+                                        </div>
+                                        {
+                                            clotheQuantity
+                                        }
+                                        <div className='border-white border-2 rounded-xl p-1'>
+                                            <FaPlus/>
+                                        </div>
+                                        </>
+                                      
+                                    }
+                                   
+                                    </button>
                                   
                             </div>
                           
