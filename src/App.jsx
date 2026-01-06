@@ -18,8 +18,7 @@ const App = () => {
     return <p style={{ color: 'red' }}>Error: {error}</p>;
   }
 
- console.log(clothesapi)
-
+ 
   return (
    
     <>
