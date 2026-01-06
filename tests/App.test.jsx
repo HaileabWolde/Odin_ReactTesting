@@ -3,14 +3,16 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
-describe("useCart", () => {
-  beforeEach(() => {
+
+beforeEach(() => {
     global.fetch = vi.fn();
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
   });
+describe("useCart", () => {
+  
 
   it("fetches and displays clothes data", async () => {
     global.fetch.mockResolvedValueOnce({
