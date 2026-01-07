@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import useCartButton from '../hooks/useCartButton';
 import '../css/clothesStore.css';
 import { FaMinus, FaPlus  } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -6,25 +6,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 const ClothesStore = ({clothesapi})=>{
 
   
-    const [clotheQuantity, setClotheQuantity] = useState(0);
-    const [cartItems, setCartItems] = useState([])
-    const handleAddToCart = (clothesId)=>{
-         let singleCartItem = cartItems.find((item)=> item === clothesId)
-          if(!singleCartItem){
-                 {
-                             setCartItems(
-                                 (prev)=> [
-                                ...prev,
-                             clothesId
-                                ]
-
-                            )
-                }
-          }
-             
-                   
-      
-    }
+    const {clotheQuantity, cartItems, handleAddToCart} = useCartButton()
    
     return (
         <div className="clothesStore">
@@ -46,15 +28,15 @@ const ClothesStore = ({clothesapi})=>{
                                  }}
                             >
                                 <button 
-                                className={`cursor-pointer ${cartItems.includes(clothes.id) ? `cartButtonWhite`: `cartButton`} w-3/4 py-3 px-3 rounded-3xl shadow-2xl self-end  flex gap-2 items-center`}
+                                className={`cursor-pointer ${cartItems.includes(clothes) ? `cartButtonWhite`: `cartButton`} w-3/4 py-3 px-3 rounded-3xl shadow-2xl self-end  flex gap-2 items-center`}
                                 onClick={(e) => {
                                          e.stopPropagation(); // Prevent triggering parent if needed
-                                        handleAddToCart(clothes.id);
+                                        handleAddToCart(clothes);
                                                           
               }}
                                 >
                                     {
-                                       cartItems.includes(clothes.id) ?
+                                       cartItems.includes(clothes) ?
 
                                        <>
                                         <div className='border-white border-2 rounded-xl p-1'>

@@ -1,11 +1,11 @@
 import ClothesStore from "../src/components/ClothesStore";
-import { vi, describe, it, expect} from "vitest";
+import {describe, it, expect} from "vitest";
 import '@testing-library/jest-dom'
 import {render, screen} from "@testing-library/react"
 import userEvent from "@testing-library/user-event";
 
 
-;
+
  
 
 describe('ClothesStore', ()=>{
@@ -25,7 +25,7 @@ describe('ClothesStore', ()=>{
 
        expect(screen.queryByText('Add to Cart')).not.toBeInTheDocument()
       
-       expect(screen.getByText("+")).toBeInTheDocument()
+      expect(screen.getByText("0")).toBeInTheDocument()
 
     })
 })

@@ -3,7 +3,8 @@ import '../css/cartComponent.css'
 const CartComponent = ()=> {
     return (
         <div className="cart">
-            <h1>Your Cart</h1>
+            <h1 className='text-[hsl(14,86%,42%)] font-extrabold text-2xl'>
+                Your Cart ()</h1>
         </div>
     )
 }
