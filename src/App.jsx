@@ -6,7 +6,8 @@ import useCart from './hooks/useCart';
 const App = () => {
   
   const {loading, error, clothesapi} = useCart();
-    const {clotheQuantity, cartItems, handleAddToCart} = useCartButton()
+    const {cartItems, addToCart,   increaseQuanity,
+  decreaseQuanity} = useCartButton()
 
   if(loading){
   
@@ -19,15 +20,19 @@ const App = () => {
     return <p style={{ color: 'red' }}>Error: {error}</p>;
   }
 
+
+ 
  
   return (
    
     <>
     <ClothesStore 
     clothesapi={clothesapi}
-    clotheQuantity={clotheQuantity}
     cartItems={cartItems}
-    handleAddToCart={handleAddToCart}
+     addToCart={addToCart}
+    increaseQuanity={increaseQuanity}
+    decreaseQuanity ={decreaseQuanity}
+ 
     />
     < CartComponent
     cartItems={cartItems}

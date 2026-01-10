@@ -2,7 +2,10 @@ import '../../css/clothesStore.css';
 import { FaMinus, FaPlus  } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
 
-const ClothesStore = ({clothesapi, clotheQuantity,cartItems, handleAddToCart})=>{
+const ClothesStore = ({clothesapi,
+    cartItems, addToCart,   increaseQuanity,
+    decreaseQuanity,
+   })=>{
 
   
   
@@ -11,41 +14,57 @@ const ClothesStore = ({clothesapi, clotheQuantity,cartItems, handleAddToCart})=>
         <div className="clothesStore">
                      {
                         clothesapi.map((
-                            clothes
+                            clothe
 
                         )=> {
                      return (
                             <div
                               data-testid="clothediv"
                             className="clothe"
-                            key={clothes.id}
-                            id={clothes.id}
+                            key={clothe.id}
+                            id={clothe.id}
                               style={{
-                               backgroundImage: `url(${clothes.image})`,
+                               backgroundImage: `url(${clothe.image})`,
                                 backgroundSize: 'cover',
                                  backgroundPosition: 'center',
                                  }}
                             >
                                 <button 
-                                className={`cursor-pointer ${cartItems.includes(clothes) ? `cartButtonWhite`: `cartButton`} w-3/4 py-3 px-3 rounded-3xl shadow-2xl self-end  flex gap-2 items-center`}
+                                className={`cursor-pointer ${cartItems.includes(clothe) ? `cartButtonWhite`: `cartButton`} w-3/4 py-3 px-3 rounded-3xl shadow-2xl self-end  flex gap-2 items-center`}
                                 onClick={(e) => {
                                          e.stopPropagation(); // Prevent triggering parent if needed
-                                        handleAddToCart(clothes);
+                                      addToCart(clothe);
                                                           
               }}
                                 >
                                     {
-                                       cartItems.includes(clothes) ?
+                                       cartItems.includes(clothe) ?
+                                      
 
                                        <>
-                                        <div className='border-white border-2 rounded-xl p-1'>
-                                            <FaMinus/>
+                                        <div className='border-white border-2 rounded-xl p-1'
+                                         onClick={()=> {
+                                                
+                                          increaseQuanity(clothe)
+                                            }}
+                                        >
+                                            <FaMinus 
+                                           
+                                         />
                                         </div>
                                         {
-                                            clotheQuantity
+                                            clothe.quantity
                                         }
-                                        <div className='border-white border-2 rounded-xl p-1'>
-                                            <FaPlus/>
+                                        
+                                        <div className='border-white border-2 rounded-xl p-1'
+                                          onClick={()=> {
+                                               
+                                         decreaseQuanity(clothe)
+                                            }}
+                                        >
+                                            <FaPlus
+                                           
+                                            />
                                         </div>
                                         </> : 
                                               <>

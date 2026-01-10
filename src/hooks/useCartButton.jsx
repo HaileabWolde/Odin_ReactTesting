@@ -1,27 +1,62 @@
 import { useState } from "react";
 export default function useCartButton() {
-   const [clotheQuantity, setClotheQuantity] = useState(0);
+ 
     const [cartItems, setCartItems] = useState([])
-    const handleAddToCart = (clothes)=>{
-         let singleCartItem = cartItems.find((item)=> item === clothes)
-          if(!singleCartItem){
-                 {
-                             setCartItems(
-                                 (prev)=> [
-                                ...prev,
-                             clothes
-                                ]
 
-                            )
-                }
-          }
-             
+
+
+    const addToCart = (clothe)=>{
+     
+     setCartItems((currentItems)=> {
+      //find if the item exists in the cartArray
+
+      const alreadyIncart = currentItems.find((cartItem)=> cartItem.id === clothe.id)
+
+      //if it does then add only the quanity of the cart element
+      if(alreadyIncart){
+            return (
+               currentItems.map((cartItem)=> cartItem.id === alreadyIncart.id ? 
+                  {
+                     ...cartItem,
+                     quantity:  cartItem.quantity + 1
+                  }
+                : cartItem)
+            )
+      }
+
+      // if not then add the item to the cart 
+      return (
+         [
+            ...currentItems,
+            {...clothe, quantity: 1}
+         ]
+      )
+     })
                    
       
     }
+    const increaseQuanity = (clothe)=>{
+       
+      setCartItems((currentItems)=> 
+         currentItems.map((item)=> 
+            item.id === clothe ? 
+      {...item, quantity: item.quantity + 1} 
+      : item))
+         
+             
+    }
+    const decreaseQuanity = (clothe)=>{
+      setCartItems((currentItems)=> currentItems.map((item)=> {
+         item.id === clothe ? {
+            ...item, quantity: Math.max(0, item.quantity - 1)
+         }: item
+      }))
+    }
+    
    return {
-    clotheQuantity,
     cartItems,
-    handleAddToCart
+ addToCart,
+ increaseQuanity,
+ decreaseQuanity 
    } 
 }
