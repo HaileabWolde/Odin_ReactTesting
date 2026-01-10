@@ -1,11 +1,12 @@
 import './App.css'
-import ClothesStore from './components/ClothesStore';
-import CartComponent from './components/Cart';
+import useCartButton from './hooks/useCartButton';
+import ClothesStore from './components/ClothesStore/ClothesStore';
+import CartComponent from './components/Cart/Cart';
 import useCart from './hooks/useCart';
 const App = () => {
   
   const {loading, error, clothesapi} = useCart();
-
+    const {clotheQuantity, cartItems, handleAddToCart} = useCartButton()
 
   if(loading){
   
@@ -22,8 +23,15 @@ const App = () => {
   return (
    
     <>
-    <ClothesStore clothesapi={clothesapi}/>
-    < CartComponent/>
+    <ClothesStore 
+    clothesapi={clothesapi}
+    clotheQuantity={clotheQuantity}
+    cartItems={cartItems}
+    handleAddToCart={handleAddToCart}
+    />
+    < CartComponent
+    cartItems={cartItems}
+    />
     </>
   );
 };

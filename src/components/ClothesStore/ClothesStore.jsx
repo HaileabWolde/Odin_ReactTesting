@@ -1,13 +1,12 @@
-import useCartButton from '../hooks/useCartButton';
-import '../css/clothesStore.css';
+import '../../css/clothesStore.css';
 import { FaMinus, FaPlus  } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
 
-const ClothesStore = ({clothesapi})=>{
+const ClothesStore = ({clothesapi, clotheQuantity,cartItems, handleAddToCart})=>{
 
   
-    const {clotheQuantity, cartItems, handleAddToCart} = useCartButton()
-   
+  
+  
     return (
         <div className="clothesStore">
                      {

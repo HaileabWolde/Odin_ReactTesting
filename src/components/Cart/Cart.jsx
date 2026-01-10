@@ -1,10 +1,12 @@
-import '../css/cartComponent.css'
+import '../../css/cartComponent.css'
 
-const CartComponent = ()=> {
+const CartComponent = ({cartItems})=> {
+  
+  
     return (
         <div className="cart">
             <h1 className='text-[hsl(14,86%,42%)] font-extrabold text-2xl'>
-                Your Cart ()</h1>
+                Your Cart ({cartItems.length})</h1>
         </div>
     )
 }
