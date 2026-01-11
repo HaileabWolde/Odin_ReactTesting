@@ -1,7 +1,9 @@
 import { describe, it, expect} from "vitest";
 import "@testing-library/jest-dom";
-import { renderHook,act} from "@testing-library/react";
+import { renderHook,act, render} from "@testing-library/react";
 import useCartButton from "../../hooks/useCartButton";
+import CartComponent from "./Cart";
+
 
 describe("useCart", ()=>{
 
@@ -50,4 +52,8 @@ describe("useCart", ()=>{
 
         expect(result.current.cartItems[0].quantity).toBe(0)
     })
+})
+
+describe("display the cartItems on the cart component", ()=>{
+    render(<CartComponent/>)
 })
