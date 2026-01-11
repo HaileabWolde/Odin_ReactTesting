@@ -17,6 +17,8 @@ const ClothesStore = ({clothesapi,
                             clothe
 
                         )=> {
+                            let clotheItem = cartItems?.find((item)=> item.id === clothe.id)
+                            let  quantity = clotheItem?.quantity || 0
                      return (
                             <div
                               data-testid="clothediv"
@@ -30,7 +32,7 @@ const ClothesStore = ({clothesapi,
                                  }}
                             >
                                 <button 
-                                className={`cursor-pointer ${cartItems.includes(clothe) ? `cartButtonWhite`: `cartButton`} w-3/4 py-3 px-3 rounded-3xl shadow-2xl self-end  flex gap-2 items-center`}
+                                className={`cursor-pointer ${quantity  ? `cartButtonWhite`: `cartButton`} w-3/4 py-3 px-3 rounded-3xl shadow-2xl self-end  flex gap-2 items-center`}
                                 onClick={(e) => {
                                          e.stopPropagation(); // Prevent triggering parent if needed
                                       addToCart(clothe);
@@ -38,14 +40,14 @@ const ClothesStore = ({clothesapi,
               }}
                                 >
                                     {
-                                       cartItems.includes(clothe) ?
+                                     quantity ?
                                       
 
                                        <>
                                         <div className='border-white border-2 rounded-xl p-1'
-                                         onClick={()=> {
-                                                
-                                          increaseQuanity(clothe)
+                                         onClick={(event)=> {
+                                            event.stopPropagation();
+                                          increaseQuanity(clothe.id)
                                             }}
                                         >
                                             <FaMinus 
@@ -53,13 +55,13 @@ const ClothesStore = ({clothesapi,
                                          />
                                         </div>
                                         {
-                                            clothe.quantity
+                                             quantity
                                         }
                                         
                                         <div className='border-white border-2 rounded-xl p-1'
-                                          onClick={()=> {
-                                               
-                                         decreaseQuanity(clothe)
+                                          onClick={(event)=> {
+                                           event.stopPropagation()    
+                                         decreaseQuanity(clothe.id)
                                             }}
                                         >
                                             <FaPlus

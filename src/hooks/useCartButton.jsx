@@ -5,9 +5,8 @@ export default function useCartButton() {
 
 
 
-    const addToCart = (clothe)=>{
-     
-     setCartItems((currentItems)=> {
+    const addToCart = (clothe)=>[
+      setCartItems((currentItems)=> {
       //find if the item exists in the cartArray
 
       const alreadyIncart = currentItems.find((cartItem)=> cartItem.id === clothe.id)
@@ -32,22 +31,20 @@ export default function useCartButton() {
          ]
       )
      })
-                   
-      
-    }
-    const increaseQuanity = (clothe)=>{
+    ]
+    const increaseQuanity = (clotheId)=>{
        
       setCartItems((currentItems)=> 
          currentItems.map((item)=> 
-            item.id === clothe ? 
+            item.id === clotheId ? 
       {...item, quantity: item.quantity + 1} 
       : item))
          
              
     }
-    const decreaseQuanity = (clothe)=>{
+    const decreaseQuanity = (clotheId)=>{
       setCartItems((currentItems)=> currentItems.map((item)=> {
-         item.id === clothe ? {
+         item.id === clotheId ? {
             ...item, quantity: Math.max(0, item.quantity - 1)
          }: item
       }))
@@ -57,6 +54,6 @@ export default function useCartButton() {
     cartItems,
  addToCart,
  increaseQuanity,
- decreaseQuanity 
+ decreaseQuanity
    } 
 }

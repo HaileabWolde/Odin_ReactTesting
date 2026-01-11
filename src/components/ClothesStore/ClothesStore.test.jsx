@@ -42,6 +42,6 @@ describe('ClothesStore', () => {
 
     // Assert changes inside the same card
     expect(within(addButton).queryByText('Add to Cart')).not.toBeInTheDocument();
-    expect(within(addButton).getByText('0')).toBeInTheDocument(); // or '1'
+    expect(within(addButton).getByText('1')).toBeInTheDocument(); // or '1'
   });
 });
