@@ -45,9 +45,9 @@ const ClothesStore = ({clothesapi,
 
                                        <>
                                         <div className='border-white border-2 rounded-xl p-1'
-                                         onClick={(event)=> {
-                                            event.stopPropagation();
-                                          increaseQuanity(clothe.id)
+                                                 onClick={(event)=> {
+                                           event.stopPropagation()    
+                                         decreaseQuanity(clothe.id)
                                             }}
                                         >
                                             <FaMinus 
@@ -59,10 +59,11 @@ const ClothesStore = ({clothesapi,
                                         }
                                         
                                         <div className='border-white border-2 rounded-xl p-1'
-                                          onClick={(event)=> {
-                                           event.stopPropagation()    
-                                         decreaseQuanity(clothe.id)
+                                           onClick={(event)=> {
+                                            event.stopPropagation();
+                                          increaseQuanity(clothe.id)
                                             }}
+                                         
                                         >
                                             <FaPlus
                                            

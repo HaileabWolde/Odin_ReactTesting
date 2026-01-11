@@ -43,10 +43,14 @@ export default function useCartButton() {
              
     }
     const decreaseQuanity = (clotheId)=>{
-      setCartItems((currentItems)=> currentItems.map((item)=> {
-         item.id === clotheId ? {
+      setCartItems((currentItems)=> 
+         currentItems.map((item)=> {
+            return (
+                   item.id === clotheId ? {
             ...item, quantity: Math.max(0, item.quantity - 1)
          }: item
+            )
+        
       }))
     }
     
