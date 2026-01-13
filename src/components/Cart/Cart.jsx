@@ -11,14 +11,17 @@ const CartComponent = ({cartItems})=> {
                       {
                 cartItems.map((eachItem)=> {
                     return (
-                        <li>
+                     
           
                               <CardComponent
                                 key={eachItem.id}
                                 id={eachItem.id}
                                 title={eachItem.title}
+                                quantity={eachItem.quantity}
+                                price={eachItem.price}
+
                                  />
-                       </li> 
+                      
                     )
                          
                 })

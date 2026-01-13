@@ -5,6 +5,12 @@ export default function useCartButton() {
 
 
 
+    const deleteFromCart = (id)=>{
+      const filterdItems = cartItems.filter((item)=> item.id != id)
+      setCartItems(
+         filterdItems
+      )
+    }
     const addToCart = (clothe)=>[
       setCartItems((currentItems)=> {
       //find if the item exists in the cartArray
@@ -63,6 +69,7 @@ export default function useCartButton() {
     cartItems,
  addToCart,
  increaseQuanity,
- decreaseQuanity
+ decreaseQuanity,
+ deleteFromCart
    } 
 }

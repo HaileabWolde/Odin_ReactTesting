@@ -44,7 +44,7 @@ const ClothesStore = ({clothesapi,
                                       
 
                                        <>
-                                        <div className='border-white border-2 rounded-xl p-1'
+                                        <div className='border-white border-2 rounded-xl p-1 cursor-pointer'
                                                  onClick={(event)=> {
                                            event.stopPropagation()    
                                          decreaseQuanity(clothe.id)
