@@ -5,4 +5,7 @@
     max-height: 70vh; /* 80% of viewport */
     padding: 1rem;
     overflow-y: auto; /* Scroll when content overflows */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }

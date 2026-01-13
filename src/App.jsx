@@ -22,7 +22,7 @@ const App = () => {
 
 
  
- 
+ console.log(clothesapi)
   return (
    
     <>

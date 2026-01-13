@@ -1,5 +1,5 @@
 import './cartComponent.css'
-
+import CardComponent from '../SingleItem/cardComponent'
 const CartComponent = ({cartItems})=> {
   
   
@@ -7,6 +7,24 @@ const CartComponent = ({cartItems})=> {
         <div className="cart">
             <h1 className='text-[hsl(14,86%,42%)] font-extrabold text-2xl'>
                 Your Cart ({cartItems.length})</h1>
+                <ul className='flex gap-5 flex-col'>
+                      {
+                cartItems.map((eachItem)=> {
+                    return (
+                        <li>
+          
+                              <CardComponent
+                                key={eachItem.id}
+                                id={eachItem.id}
+                                title={eachItem.title}
+                                 />
+                       </li> 
+                    )
+                         
+                })
+            }
+                </ul>
+          
         </div>
     )
 }
