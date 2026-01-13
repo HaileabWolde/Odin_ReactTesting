@@ -6,10 +6,14 @@ export default function useCartButton() {
 
 
     const deleteFromCart = (id)=>{
+     
       const filterdItems = cartItems.filter((item)=> item.id != id)
-      setCartItems(
+   
+          setCartItems(
          filterdItems
       )
+      
+     
     }
     const addToCart = (clothe)=>[
       setCartItems((currentItems)=> {

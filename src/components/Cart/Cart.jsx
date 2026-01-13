@@ -1,6 +1,6 @@
 import './cartComponent.css'
 import CardComponent from '../SingleItem/cardComponent'
-const CartComponent = ({cartItems})=> {
+const CartComponent = ({cartItems, deleteFromCart})=> {
   
   
     return (
@@ -19,7 +19,7 @@ const CartComponent = ({cartItems})=> {
                                 title={eachItem.title}
                                 quantity={eachItem.quantity}
                                 price={eachItem.price}
-
+                                deleteFromCart={deleteFromCart}
                                  />
                       
                     )

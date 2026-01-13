@@ -1,9 +1,9 @@
 import { FaTimes } from 'react-icons/fa'
-import useCartButton from '../../hooks/useCartButton';
+
 const   CardComponent = ({id, title, quantity,
-    price
+    price, deleteFromCart
 })=>{
-    const {deleteFromCart} = useCartButton()
+   
 return(
     <li>
          <h1 className="text-[hsl(14,65%,9%)] font-bold">{title}</h1>

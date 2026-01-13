@@ -7,7 +7,7 @@ const App = () => {
   
   const {loading, error, clothesapi} = useCart();
     const {cartItems, addToCart,   increaseQuanity,
-  decreaseQuanity} = useCartButton()
+  decreaseQuanity, deleteFromCart} = useCartButton()
 
   if(loading){
   
@@ -36,6 +36,7 @@ const App = () => {
     />
     < CartComponent
     cartItems={cartItems}
+    deleteFromCart={deleteFromCart}
     />
     </>
   );
