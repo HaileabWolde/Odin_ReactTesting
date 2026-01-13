@@ -1,4 +1,4 @@
-import '../../css/clothesStore.css';
+import './clothesStore.css';
 import { FaMinus, FaPlus  } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
 

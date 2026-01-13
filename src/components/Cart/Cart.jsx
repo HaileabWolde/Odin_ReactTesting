@@ -1,4 +1,4 @@
-import '../../css/cartComponent.css'
+import './cartComponent.css'
 
 const CartComponent = ({cartItems})=> {
   
