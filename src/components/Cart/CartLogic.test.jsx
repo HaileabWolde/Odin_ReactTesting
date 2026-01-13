@@ -1,6 +1,6 @@
 import { describe, it, expect, vi} from "vitest";
 import "@testing-library/jest-dom";
-import { renderHook, act, render,screen, within} from "@testing-library/react";
+import { renderHook, act, render,screen} from "@testing-library/react";
 import useCartButton from "../../hooks/useCartButton";
 import CartComponent from "./Cart";
 
@@ -53,7 +53,7 @@ describe("useCart", ()=>{
         expect(result.current.cartItems[0].quantity).toBe(2)
 
         act(()=> {
-            result.current.decreaseQuanity(clothe)
+            result.current.decreaseQuanity(clothe.id)
         })
         expect(result.current.cartItems[0].quantity).toBe(1)
     })
@@ -75,6 +75,22 @@ describe("useCart", ()=>{
         })
 
        expect(result.current.cartItems).toHaveLength(0);
+    })
+     it('should remove the item completly', ()=>{
+        const {result} = renderHook(()=>useCartButton())
+
+        const clothe = {id: 2, image: "./my-back.jpg"}
+
+        act(()=>{
+            result.current.addToCart(clothe)
+        })
+
+        expect(result.current.cartItems).toHaveLength(1)
+        act(()=> {
+            result.current.deleteFromCart(clothe.id)
+        })
+
+        expect(result.current.cartItems).toHaveLength(0)
     })
 })
 
