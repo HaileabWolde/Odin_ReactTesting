@@ -1,6 +1,6 @@
-import { describe, it, expect} from "vitest";
+import { describe, it, expect, vi} from "vitest";
 import "@testing-library/jest-dom";
-import { renderHook,act, render} from "@testing-library/react";
+import { renderHook, act, render,screen, within} from "@testing-library/react";
 import useCartButton from "../../hooks/useCartButton";
 import CartComponent from "./Cart";
 
@@ -37,23 +37,71 @@ describe("useCart", ()=>{
         expect(result.current.cartItems[0].quantity).toBe(2)
     })
 
-     it('decrease the quanity of the item in th cart', ()=>{
+    it('should decrease the item when decrease button is clicked', ()=>{
+        const {result} = renderHook(()=> useCartButton())
+
+        const clothe = {id: 2, image: './my-back2.jpg'}
+
+        act(()=> {
+                result.current.addToCart(clothe)
+        })
+        expect(result.current.cartItems).toHaveLength(1)
+
+        act(()=>{
+            result.current.addToCart(clothe)
+        })
+        expect(result.current.cartItems[0].quantity).toBe(2)
+
+        act(()=> {
+            result.current.decreaseQuanity(clothe)
+        })
+        expect(result.current.cartItems[0].quantity).toBe(1)
+    })
+    
+     it('should remove item completely when quantity reaches 0', ()=>{
         const {result} = renderHook(()=>useCartButton())
 
         const clothe = {id: 2, image: "./my-back.jpg"}
 
         act(()=>{
             result.current.addToCart(clothe)
+
         })
+
+        expect(result.current.cartItems).toHaveLength(1)
 
         act(()=> {
             result.current.decreaseQuanity(clothe.id)
         })
 
-        expect(result.current.cartItems[0].quantity).toBe(0)
+       expect(result.current.cartItems).toHaveLength(0);
     })
 })
 
-describe("display the cartItems on the cart component", ()=>{
-    render(<CartComponent/>)
-})
+describe("CartComponent", () => {
+  it('displays the cart items on the cart component', async () => {
+    const onClick = vi.fn();
+    
+    const cartItems = [
+      {
+        id: 2,
+        title: "clothes",
+        quantity: 2,
+        price: 4,
+      }
+    ];
+
+    render(
+      <CartComponent
+        cartItems={cartItems}
+        deleteFromCart={onClick}
+      />
+    );
+
+    // await the async query
+    const clotheDiv = await screen.findByTestId('eachdiv');
+
+   
+     expect(clotheDiv).toHaveTextContent('clothes');
+  });
+});

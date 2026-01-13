@@ -5,7 +5,9 @@ const   CardComponent = ({id, title, quantity,
 })=>{
    
 return(
-    <li>
+    <li
+      data-testid="eachdiv"
+    >
          <h1 className="text-[hsl(14,65%,9%)] font-bold">{title}</h1>
          <div className="flex justify-between mb-2">
             <span className="flex gap-3 align-middle">
