@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import './clothesStore.css';
 import { FaMinus, FaPlus  } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -20,8 +21,9 @@ const ClothesStore = ({clothesapi,
                             let clotheItem = cartItems?.find((item)=> item.id === clothe.id)
                             let  quantity = clotheItem?.quantity || 0
                      return (
-                            <div
-                              data-testid="clothediv"
+                        <Link
+                        to={`/clothe/${clothe.id}`}
+                         data-testid="clothediv"
                             className="clothe"
                             key={clothe.id}
                             id={clothe.id}
@@ -30,10 +32,12 @@ const ClothesStore = ({clothesapi,
                                 backgroundSize: 'cover',
                                  backgroundPosition: 'center',
                                  }}
-                            >
+                        >
+                            
                                 <button 
                                 className={`cursor-pointer ${quantity  ? `cartButtonWhite`: `cartButton`} w-3/4 py-3 px-3 rounded-3xl shadow-2xl self-end  flex gap-2 items-center`}
                                 onClick={(e) => {
+                                    e.preventDefault()
                                          e.stopPropagation(); // Prevent triggering parent if needed
                                       addToCart(clothe);
                                                           
@@ -46,6 +50,7 @@ const ClothesStore = ({clothesapi,
                                        <>
                                         <div className='border-white border-2 rounded-xl p-1 cursor-pointer'
                                                  onClick={(event)=> {
+                                              event.preventDefault()
                                            event.stopPropagation()    
                                          decreaseQuanity(clothe.id)
                                             }}
@@ -60,6 +65,7 @@ const ClothesStore = ({clothesapi,
                                         
                                         <div className='border-white border-2 rounded-xl p-1'
                                            onClick={(event)=> {
+                                            event.preventDefault()
                                             event.stopPropagation();
                                           increaseQuanity(clothe.id)
                                             }}
@@ -80,7 +86,9 @@ const ClothesStore = ({clothesapi,
                                    
                                     </button>
                                   
-                            </div>
+                         
+                        </Link>
+                           
                           
                         )
                     })
