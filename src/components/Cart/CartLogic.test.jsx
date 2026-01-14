@@ -120,4 +120,29 @@ describe("CartComponent", () => {
    
      expect(clotheDiv).toHaveTextContent('clothes');
   });
+
+  it("acculmates and calulates the total price inside the cart", async()=>{
+        const onClick = vi.fn();
+    
+         const cartItems = [
+         {
+        id: 2,
+        title: "clothes",
+        quantity: 2,
+        price: 4,
+      }, {
+        id: 3,
+        title: "shoes",
+        quantity: 2,
+        price: 4
+      }
+        ];
+    render(
+      <CartComponent
+        cartItems={cartItems}
+        deleteFromCart={onClick}
+      />
+    );
+    expect(screen.getByText('$16')).toBeInTheDocument()
+  })
 });
