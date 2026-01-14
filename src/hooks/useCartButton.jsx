@@ -68,12 +68,17 @@ export default function useCartButton() {
       }
         )
     }
+
+    const clearCart = ()=>{
+      setCartItems([])
+    }
     
    return {
     cartItems,
  addToCart,
  increaseQuanity,
  decreaseQuanity,
- deleteFromCart
+ deleteFromCart,
+  clearCart
    } 
 }

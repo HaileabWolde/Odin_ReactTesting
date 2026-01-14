@@ -92,6 +92,20 @@ describe("useCart", ()=>{
 
         expect(result.current.cartItems).toHaveLength(0)
     })
+    it('should clear the cartItems completyl from the cart', ()=>{
+      const {result} = renderHook(()=> useCartButton())
+        const clothe = {id: 2, image: "./my-back.jpg"}
+
+        act(()=>{
+            result.current.addToCart(clothe)
+        })
+        expect(result.current.cartItems).toHaveLength(1)
+
+        act(()=> {
+          result.current.clearCart()
+        })
+        expect(result.current.cartItems).toHaveLength(0)
+    })
 })
 
 describe("CartComponent", () => {
