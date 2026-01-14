@@ -1,0 +1,13 @@
+.header{
+    width: 100%;
+    position: sticky;
+    top: 0px;
+ background-color: hsl(20, 50%, 98%);
+    font-family: "Roboto", serif;
+    font-weight: 800;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.2);
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}

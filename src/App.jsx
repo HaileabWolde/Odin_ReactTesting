@@ -1,5 +1,6 @@
 import './App.css'
 import useCartButton from './hooks/useCartButton';
+import Header from './components/Header/Header';
 import ClothesStore from './components/ClothesStore/ClothesStore';
 import CartComponent from './components/Cart/Cart';
 import useCart from './hooks/useCart';
@@ -24,8 +25,9 @@ const App = () => {
  
  console.log(clothesapi)
   return (
-   
-    <>
+   <>
+      <Header/>
+     <div id='container'>
     <ClothesStore 
     clothesapi={clothesapi}
     cartItems={cartItems}
@@ -34,12 +36,17 @@ const App = () => {
     decreaseQuanity ={decreaseQuanity}
  
     />
+   {
+    /*
     < CartComponent
     cartItems={cartItems}
     deleteFromCart={deleteFromCart}
     clearCart={clearCart}
-    />
-    </>
+    />*/
+   } 
+    </div>
+   </>
+  
   );
 };
 
