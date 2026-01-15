@@ -24,9 +24,14 @@ const CartComponent = ()=> {
     }
     return (
         <div className="cart">
-            <h1 className='text-[hsl(14,86%,42%)] font-extrabold text-2xl'>
+          {
+            /*
+               <h1 className='text-[hsl(14,86%,42%)] font-extrabold text-2xl'>
                 Your Cart ({cartItems.length})</h1>
-                <ul className='flex gap-5 flex-col'>
+            */
+          }
+           
+                <ul className='flex gap-5 flex-col bg-[#fff] shadow-xl p-4 rounded-2xl'>
                       {
                 cartItems.map((eachItem)=> {
                     return (
@@ -37,6 +42,7 @@ const CartComponent = ()=> {
                                 id={eachItem.id}
                                 title={eachItem.title}
                                 quantity={eachItem.quantity}
+                                image={eachItem.image}
                                 price={eachItem.price}
                                 deleteFromCart={deleteFromCart}
                                  />
@@ -47,22 +53,23 @@ const CartComponent = ()=> {
             }
                 </ul>
           {
-                cartItems.length > 0 && 
-              <div className='flex justify-around items-center'>
-                <p className='text-[hsl(7,20%,60%)] font-bold'>Order Total</p>
+         
+              <div className='bg-[#fff] shadow-xl p-8 rounded-2xl flex flex-col gap-4 '>
+                <span className='flex justify-around items-center'>
+                     <h1 className='text-[hsl(7,20%,60%)] font-bold text-xl'>Order Total</h1>
                   <h1 className="text-[hsl(14,65%,9%)] font-black text-2xl">${allSum}</h1>
-              </div>
-          }
-          {
-            cartItems.length > 0 && 
-            <button 
+                </span>
+             
+                  <button 
             onClick={()=> {
               openModal()
             }}
-            className='cursor-pointer w-3/4 py-3 px-3 rounded-3xl shadow-2xl bg-[hsl(14,86%,42%)] self-center text-[hsl(20,50%,98%)]'>
+            className='cursor-pointer w-4/4 py-3 px-3 rounded-3xl shadow-2xl bg-[hsl(14,86%,42%)] self-center text-[hsl(20,50%,98%)]'>
                 <p className='font-bold'>Confirm Order</p>
           </button>
+              </div>
           }
+
           {
             isModalOpen && 
             <Dialog

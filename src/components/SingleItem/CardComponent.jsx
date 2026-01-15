@@ -1,14 +1,21 @@
 import { FaTimes } from 'react-icons/fa'
 
 const   CardComponent = ({id, title, quantity,
-    price, deleteFromCart
+      image,  price, deleteFromCart
 })=>{
    
 return(
     <li
       data-testid="eachdiv"
+  
     >
-         <h1 className="text-[hsl(14,65%,9%)] font-bold">{title}</h1>
+        <img 
+        alt={title} 
+        src={image}
+        className='w-[10%]'
+        />
+       
+             <h1 className="text-[hsl(14,65%,9%)] font-bold">{title}</h1>
          <div className="flex justify-between mb-2">
             <span className="flex gap-3 align-middle">
                 <p className="text-[hsl(14,86%,42%)] font-bold">{quantity}x</p>
@@ -28,6 +35,8 @@ return(
                                                    />
                                                   </div>
          </div>
+     
+        
         <div className="border-1 border-solid border-[hsl(14,25%,72%)]"></div>
 
     </li>

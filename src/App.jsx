@@ -22,7 +22,7 @@ const App = () => {
 
 
  
- /*console.log(clothesapi)*/
+ console.log(clothesapi)
  
  const outletContext = {
   cartItems, addToCart ,increaseQuanity,
@@ -35,27 +35,9 @@ const App = () => {
       <Header
       />
      <div id='container'>
-      {
-        /*
-         <ClothesStore 
-    clothesapi={clothesapi}
-    cartItems={cartItems}
-     addToCart={addToCart}
-    increaseQuanity={increaseQuanity}
-    decreaseQuanity ={decreaseQuanity}
- 
-    />
-        */
-      }
+     
     <Outlet context={outletContext}/>
-   {
-    /*
-    < CartComponent
-    cartItems={cartItems}
-    deleteFromCart={deleteFromCart}
-    clearCart={clearCart}
-    />*/
-   } 
+  
     </div>
    </>
   

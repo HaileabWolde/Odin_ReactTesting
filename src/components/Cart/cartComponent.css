@@ -1,11 +1,7 @@
 .cart{
-    background-color: #fff;
-    box-shadow: 0 4px 10px #0003;
-    border-radius: 20px;
-    padding: 1rem;
-    max-height: 80vh;
-    overflow-y: auto; /* Scroll when content overflows */
-    display: flex;
-    flex-direction: column;
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: 70% 25%;
+ 
     gap: 2rem;
 }
