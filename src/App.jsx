@@ -1,8 +1,7 @@
 import './App.css'
 import useCartButton from './hooks/useCartButton';
 import Header from './components/Header/Header';
-import ClothesStore from './components/ClothesStore/ClothesStore';
-import CartComponent from './components/Cart/Cart';
+import { Outlet } from 'react-router';
 import useCart from './hooks/useCart';
 const App = () => {
   
@@ -23,12 +22,22 @@ const App = () => {
 
 
  
- console.log(clothesapi)
+ /*console.log(clothesapi)*/
+ 
+ const outletContext = {
+  cartItems, addToCart ,increaseQuanity,
+  decreaseQuanity ,deleteFromCart  , clearCart,
+  clothesapi
+  
+ }
   return (
    <>
-      <Header/>
+      <Header
+      />
      <div id='container'>
-    <ClothesStore 
+      {
+        /*
+         <ClothesStore 
     clothesapi={clothesapi}
     cartItems={cartItems}
      addToCart={addToCart}
@@ -36,6 +45,9 @@ const App = () => {
     decreaseQuanity ={decreaseQuanity}
  
     />
+        */
+      }
+    <Outlet context={outletContext}/>
    {
     /*
     < CartComponent

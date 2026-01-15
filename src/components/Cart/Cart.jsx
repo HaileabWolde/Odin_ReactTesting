@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useOutletContext } from 'react-router'
 import './cartComponent.css'
 import Dialog from '../Dialog/Dialog'
 import CardComponent from '../SingleItem/CardComponent'
-const CartComponent = ({cartItems, deleteFromCart,   clearCart})=> {
+const CartComponent = ()=> {
   
+  const {cartItems, deleteFromCart, clearCart} = useOutletContext()
+
     const allSum =  Math.round(cartItems.reduce((accumlator, currentValue)=>{
                     const sum = currentValue.quantity * currentValue.price;
                     accumlator = accumlator + sum;

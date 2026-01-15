@@ -1,15 +1,13 @@
 import { Link } from 'react-router';
+import { useOutletContext } from "react-router";
 import './clothesStore.css';
 import { FaMinus, FaPlus  } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
 
-const ClothesStore = ({clothesapi,
-    cartItems, addToCart,   increaseQuanity,
-    decreaseQuanity,
-   })=>{
+const ClothesStore = ()=>{
 
   
-  
+  const {clothesapi, cartItems, addToCart, increaseQuanity, decreaseQuanity} = useOutletContext()
   
     return (
         <div className="clothesStore">
