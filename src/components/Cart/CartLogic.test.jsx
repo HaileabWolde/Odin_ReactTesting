@@ -1,9 +1,18 @@
-import { describe, it, expect, vi} from "vitest";
+import { describe, it, expect, vi, beforeEach} from "vitest";
 import "@testing-library/jest-dom";
 import { renderHook, act, render,screen} from "@testing-library/react";
 import useCartButton from "../../hooks/useCartButton";
 import CartComponent from "./Cart";
+import { useOutletContext } from 'react-router'; // ← must import the real one
 
+// ── Hoist the mock function so it's available inside the hoisted vi.mock ──
+const { mockUseOutletContext } = vi.hoisted(() => ({
+  mockUseOutletContext: vi.fn(),
+}));
+
+vi.mock('react-router', () => ({
+  useOutletContext: mockUseOutletContext,
+}));
 
 describe("useCart", ()=>{
 
@@ -109,54 +118,48 @@ describe("useCart", ()=>{
 })
 
 describe("CartComponent", () => {
-  it('displays the cart items on the cart component', async () => {
-    const onClick = vi.fn();
-    
-    const cartItems = [
-      {
-        id: 2,
-        title: "clothes",
-        quantity: 2,
-        price: 4,
-      }
-    ];
-
-    render(
-      <CartComponent
-        cartItems={cartItems}
-        deleteFromCart={onClick}
-      />
-    );
-
-    // await the async query
-    const clotheDiv = await screen.findByTestId('eachdiv');
-
-   
-     expect(clotheDiv).toHaveTextContent('clothes');
+  beforeEach(() => {
+    vi.clearAllMocks();           // cleans call history + implementations
   });
 
-  it("acculmates and calulates the total price inside the cart", async()=>{
-        const onClick = vi.fn();
-    
-         const cartItems = [
-         {
-        id: 2,
-        title: "clothes",
-        quantity: 2,
-        price: 4,
-      }, {
-        id: 3,
-        title: "shoes",
-        quantity: 2,
-        price: 4
-      }
-        ];
-    render(
-      <CartComponent
-        cartItems={cartItems}
-        deleteFromCart={onClick}
-      />
-    );
-    expect(screen.getByText('$16')).toBeInTheDocument()
-  })
+  it('displays the cart items on the cart component', async () => {
+    const mockDelete = vi.fn();
+    const mockClear  = vi.fn();
+
+    vi.mocked(useOutletContext).mockReturnValue({
+      cartItems: [
+        {
+          id: 2,
+          title: "clothes",
+          quantity: 2,
+          price: 4,
+          image: "https://example.com/clothes.jpg", // ← add if CardComponent needs it
+        }
+      ],
+      deleteFromCart: mockDelete,
+      clearCart: mockClear,
+    });
+
+    render(<CartComponent />);
+
+    // These should now pass
+    expect(await screen.findByText("clothes")).toBeInTheDocument();
+    expect(screen.getByText("2x")).toBeInTheDocument();     // quantity
+  });
+
+  it("accumulates and calculates the total price inside the cart", async () => {
+    vi.mocked(useOutletContext).mockReturnValue({
+      cartItems: [
+        { id: 2, title: "clothes", quantity: 2, price: 4, image: "…" },
+        { id: 3, title: "shoes",   quantity: 2, price: 4, image: "…" },
+      ],
+      deleteFromCart: vi.fn(),
+      clearCart: vi.fn(),
+    });
+
+    render(<CartComponent />);
+
+    expect(screen.getByText("$16")).toBeInTheDocument();
+  });
 });
+  
