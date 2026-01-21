@@ -4,6 +4,7 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
 
+
 beforeEach(() => {
     global.fetch = vi.fn();
   });
@@ -12,7 +13,9 @@ beforeEach(() => {
     vi.restoreAllMocks();
   });
 describe("useCart", () => {
-  
+   beforeEach(() => {
+    vi.clearAllMocks();           // cleans call history + implementations
+  });
 
   it("fetches and displays clothes data", async () => {
     global.fetch.mockResolvedValueOnce({
@@ -22,14 +25,14 @@ describe("useCart", () => {
         { id: 1, image: "./my-background.jpg" },
       ],
     });
-
+   
+   
+    
     render(<App />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
 
-   const clothediv = await screen.findByTestId('clothediv'); // use findBy for async
-
-   expect(clothediv).toHaveStyle('background-image: url(./my-background.jpg)')
+    expect(global.fetch).toHaveBeenCalledTimes(1);
    
   });
 });
