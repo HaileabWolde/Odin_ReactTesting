@@ -2,6 +2,5 @@
     min-width: 100%;
     display: grid;
     grid-template-columns: 70% 25%;
- 
     gap: 2rem;
 }

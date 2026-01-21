@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router'
 import { useState } from 'react'
-
 import './cartComponent.css'
+import Cart from'../../assets/Cart.png'
 import Dialog from '../Dialog/Dialog'
 import CardComponent from '../SingleItem/CardComponent'
 const CartComponent = ()=> {
@@ -31,8 +31,10 @@ const CartComponent = ()=> {
                 Your Cart ({cartItems.length})</h1>
             */
           }
-           
-                <ul className='flex gap-5 flex-col bg-[#fff] shadow-xl p-4 rounded-2xl'>
+          {
+           cartItems.length > 0 ? 
+               <>
+            <ul className='flex gap-5 flex-col bg-[#fff] shadow-xl p-4 rounded-2xl'>
                       {
                 cartItems.map((eachItem)=> {
                     return (
@@ -55,7 +57,7 @@ const CartComponent = ()=> {
                 </ul>
           {
          
-              <div className='bg-[#fff] shadow-xl p-8 rounded-2xl flex flex-col gap-4  justify-center '>
+              <div className='bg-[#fff] shadow-xl p-8 rounded-2xl flex flex-col gap-4  justify-center max-h-60'>
                 <span className='flex justify-around items-center'>
                      <h1 className='text-[hsl(7,20%,60%)] font-bold text-xl'>Order Total</h1>
                   <h1 className="text-[hsl(14,65%,9%)] font-black text-2xl">${allSum}</h1>
@@ -82,6 +84,18 @@ const CartComponent = ()=> {
 
           }
           
+         </>
+          :
+          <div className='w-6xl flex justify-center'>
+                <img
+              src={Cart}
+             className='w-[50%]'
+            />
+            </div>
+        
+          }
+           
+              
           
         </div>
     )

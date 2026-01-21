@@ -42,6 +42,7 @@ const Dialog = ({  isOpen, isClose, cartItems,  clearCart})=>{
                                 id={eachItem.id}
                                 title={eachItem.title}
                                 quantity={eachItem.quantity}
+                                image={eachItem.image}
                                 price={eachItem.price}
                                  />
                       
