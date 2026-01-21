@@ -33,6 +33,7 @@ const App = () => {
   return (
    <>
       <Header
+      cartItems={cartItems}
       />
      <div id='container'>
      
