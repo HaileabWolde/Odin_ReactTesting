@@ -31,7 +31,9 @@ const ProductDetails = ()=>{
             <p className="text-[hsl(7,20%,60%)] font-bold">{itemAPI.description}</p>
               <p className="ext-[hsl(14,65%,9%)] font-bold text-4xl font-black">${itemAPI.price}</p>
               <div className="flex justify-around">
-                 <button
+                {
+                itemQuantity &&
+                   <button
               className={`cursor-pointer cartButtonWhite w-1/4 py-3 px-3 rounded-3xl shadow-2xl   flex gap-2 items-center`}
                 onClick={(e) => {
                                     e.preventDefault()
@@ -68,8 +70,10 @@ const ProductDetails = ()=>{
                                                                                 </div>
                 
               </button>
+                }
+                
               <button 
-              className="cursor-pointer cartButton rounded-3xl shadow-2xl flex gap-2 items-center w-1/4"
+              className="cursor-pointer cartButton rounded-3xl shadow-2xl flex gap-2 items-center w-1/4 p-2"
                onClick={(e) => {
                                     e.preventDefault()
                                          e.stopPropagation(); // Prevent triggering parent if needed
