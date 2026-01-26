@@ -21,7 +21,7 @@ const ProductDetails = ()=>{
     const itemQuantity = cartItems.find((item)=> item.id === itemAPI.id)
 
     return (
-      <div className="w-full mx-auto p-6 flex justify-around gap-4">
+      <div className="items-center w-full mx-auto p-6 flex flex-col md:flex-row justify-around gap-4">
         <img
         src={itemAPI.image}
          className='w-[20rem]'
@@ -29,12 +29,12 @@ const ProductDetails = ()=>{
         <div className="flex flex-col justify-center gap-8 ">
            <h1 className="text-[hsl(14,65%,9%)] font-bold text-3xl">{itemAPI.title}</h1>
             <p className="text-[hsl(7,20%,60%)] font-bold">{itemAPI.description}</p>
-              <p className="ext-[hsl(14,65%,9%)] font-bold text-4xl font-black">${itemAPI.price}</p>
-              <div className="flex justify-around">
+              <p className="ext-[hsl(14,65%,9%)]  text-4xl font-black">${itemAPI.price}</p>
+              <div className="flex justify-around gap-6">
                 {
                 itemQuantity &&
                    <button
-              className={`cursor-pointer cartButtonWhite w-1/4 py-3 px-3 rounded-3xl shadow-2xl   flex gap-2 items-center`}
+              className={`cursor-pointer cartButtonWhite w-2/4 py-3 px-3 rounded-3xl shadow-2xl   flex gap-2 items-center`}
                 onClick={(e) => {
                                     e.preventDefault()
                                          e.stopPropagation(); // Prevent triggering parent if needed
@@ -73,7 +73,7 @@ const ProductDetails = ()=>{
                 }
                 
               <button 
-              className="cursor-pointer cartButton rounded-3xl shadow-2xl flex gap-2 items-center w-1/4 p-2"
+              className="cursor-pointer cartButton rounded-3xl shadow-2xl flex gap-2 items-center w-full md:w-2/4 lg:w-2/4 p-2"
                onClick={(e) => {
                                     e.preventDefault()
                                          e.stopPropagation(); // Prevent triggering parent if needed

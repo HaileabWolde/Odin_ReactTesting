@@ -24,7 +24,7 @@ const CartComponent = ()=> {
         setIsModalOpen(false)
     }
     return (
-        <div className="cart">
+        <div className="min-w-full grid grid-cols-1 md:grid-cols-[70%_30%] gap-4">
           {
             /*
                

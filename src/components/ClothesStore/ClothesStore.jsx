@@ -10,7 +10,7 @@ const ClothesStore = ()=>{
   const {clothesapi, cartItems, addToCart, increaseQuanity, decreaseQuanity} = useOutletContext()
   
     return (
-        <div className="flex flex-col md:flex-row  justify-center gap-18 flex-wrap">
+        <div className="flex flex-col md:flex-row  justify-center items-center gap-18 flex-wrap w-full">
                      {
                         clothesapi.map((
                             clothe
@@ -22,7 +22,7 @@ const ClothesStore = ()=>{
                         <Link
                         to={`/clothe/${clothe.id}`}
                          data-testid="clothediv"
-                            className="flex justify-center w-[60vw] md:w-[45%] lg:w-[28%] min-h-[450px]"
+                            className=" flex justify-center w-full md:w-[45%] lg:w-[28%] min-h-[550px] md:min-h-[450px]"
                             key={clothe.id}
                             id={clothe.id}
                               style={{
