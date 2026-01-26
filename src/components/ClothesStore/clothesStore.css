@@ -1,21 +1,5 @@
-.clothesStore{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
-    flex-wrap: wrap;
-  
-}
-.clothe{
-    width: 25%;
-    min-height: 450px;
-    aspect-ratio: 1/1;
-    margin: 1rem 0rem;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    
-}
+
+
 .cartButton{
     border: 2px solid hsl(12, 20%, 44%);
     background-color: white;
