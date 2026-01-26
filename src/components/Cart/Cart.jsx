@@ -25,11 +25,7 @@ const CartComponent = ()=> {
     }
     return (
         <div className="min-w-full grid grid-cols-1 md:grid-cols-[70%_30%] gap-4">
-          {
-            /*
-               
-            */
-          }
+         
           {
            cartItems.length > 0 ? 
                <>
@@ -85,7 +81,7 @@ const CartComponent = ()=> {
           
          </>
           :
-          <div className='w-6xl flex justify-center'>
+          <div className='flex justify-center'>
                 <img
               src={Cart}
              className='w-[50%]'

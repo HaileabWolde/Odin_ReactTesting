@@ -34,7 +34,7 @@ const ProductDetails = ()=>{
                 {
                 itemQuantity &&
                    <button
-              className={`cursor-pointer cartButtonWhite w-2/4 py-3 px-3 rounded-3xl shadow-2xl   flex gap-2 items-center`}
+              className={`cursor-pointer cartButtonWhite w-3/4 md:w-1/4 py-3 px-3 rounded-3xl shadow-2xl   flex gap-2 items-center`}
                 onClick={(e) => {
                                     e.preventDefault()
                                          e.stopPropagation(); // Prevent triggering parent if needed
